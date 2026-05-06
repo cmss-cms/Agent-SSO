@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能运维助手 - LangGraph Chat</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>智能运维助手</span>
+                </div>
+                <button class="btn-icon" id="toggleSidebar" title="收起侧边栏">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+
+            <button class="btn-new-chat" id="newChatBtn">
+                <i class="fas fa-plus"></i>
+                <span>新建对话</span>
+            </button>
+
+            <div class="sidebar-section">
+                <h3>会话列表</h3>
+                <div class="session-list" id="sessionList">
+                    <!-- 动态填充 -->
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>已注册 Skills</h3>
+                <div class="skill-list" id="skillList">
+                    <!-- 动态填充 -->
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="tech-badge">
+                    <span>LangChain</span>
+                    <span>LangGraph</span>
+                    <span>LangSmith</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 主聊天区域 -->
+        <main class="chat-main">
+            <div class="chat-header">
+                <button class="btn-icon mobile-only" id="openSidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="chat-title">
+                    <h2 id="currentSessionTitle">新对话</h2>
+                    <span class="intent-badge" id="intentBadge" style="display:none;"></span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" id="clearHistory" title="清除历史">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h1>智能运维助手</h1>
+                    <p>基于 LangChain + LangGraph 构建，支持意图识别、FAQ检索、Skill执行</p>
+                    <div class="quick-actions">
+                        <button class="quick-btn" data-message="帮我添加一个新用户">
+                            <i class="fas fa-user-plus"></i>
+                            添加用户
+                        </button>
+                        <button class="quick-btn" data-message="我想删除一个用户">
+                            <i class="fas fa-user-minus"></i>
+                            删除用户
+                        </button>
+                        <button class="quick-btn" data-message="帮我添加一台服务器">
+                            <i class="fas fa-server"></i>
+                            添加资源
+                        </button>
+                        <button class="quick-btn" data-message="如何配置SSO单点登录？">
+                            <i class="fas fa-key"></i>
+                            SSO配置
+                        </button>
+                        <button class="quick-btn" data-message="系统支持哪些资源类型？">
+                            <i class="fas fa-question-circle"></i>
+                            常见问题
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="input-wrapper">
+                    <textarea
+                        id="messageInput"
+                        placeholder="输入消息... (Enter 发送, Shift+Enter 换行)"
+                        rows="1"
+                    ></textarea>
+                    <button class="btn-send" id="sendBtn" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
